@@ -7,7 +7,6 @@ fn great_world(){
         println!("{}",&region);
     }
 
-
 }
 
 fn main() {
