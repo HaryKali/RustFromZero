@@ -32,14 +32,19 @@
 //     s
 // }
 
-// 修复错误，不要删除任何代码行
+
+// fn main() {
+//     let s = String::from("hello, world");
+//     print_str(&s); // Pass a reference instead of moving ownership
+//
+//     println!("{}", s); // 's' remains valid here
+// }
+//
+// fn print_str(s1: &str) { // Accept a string slice (&str) instead of String
+//     println!("{}", s1); // Directly use the reference
+// }
 fn main() {
-    let s = String::from("hello, world");
-    print_str(s);
-
-    println!("{}", s);
-}
-
-fn print_str(s: String)  {
-    println!("{}",s);
+    let x = (1, 2, (), "hello".to_string());
+    let y = &x;
+    println!("{:?}, {:?}", x, y);
 }
