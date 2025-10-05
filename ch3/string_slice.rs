@@ -136,12 +136,116 @@
 //     // println!("{}",s1);
 // }
 
+// fn main() {
+//     let s1 = String::from("hello,");
+//     let s2 = String::from("world!");
+//     // 在下句中，s1的所有权被转移走了，因此后面不能再使用s1
+//     let s3 = s1 + &s2;
+//     assert_eq!(s3,"hello,world!");
+//     // 下面的语句如果去掉注释，就会报错
+//     // println!("{}",s1);
+// }
+
+
+// 修复错误，不要新增代码行
+// fn main() {
+//     let s: &str = "hello, world";
+// }
+
+
+// 使用至少两种方法来修复错误
+// fn main() {
+//     let s: &str = "hello, world".into();
+//     greetings(s)
+// }
+//
+// fn greetings(s: &str) {
+//     println!("{}",s)
+// }
+
+// 填空
+// fn main() {
+//     let mut s = String::from("");
+//     s.push_str("hello, world");
+//     s.push('!');
+//
+//     assert_eq!(s, "hello, world!");
+// }
+
+
+// 修复所有错误，并且不要新增代码行
+// fn main() {
+//     let mut s = String::from("hello");
+//     s.push_str(",");
+//     s.push_str(" world");
+//     s += "!";
+//
+//     println!("{}", &s)
+// }
+
+
+
+// 填空
+// fn main() {
+//     let s = String::from("I like dogs");
+//     // 以下方法会重新分配一块内存空间，然后将修改后的字符串存在这里
+//     let s1 = s.replace("dogs", "cats");
+//
+//     assert_eq!(s1, "I like cats")
+// }
+
+// 填空
+
+// 修复所有错误，不要删除任何一行代码
+// fn main() {
+//     let s1 = String::from("hello,");
+//     let s2 = String::from("world!");
+//     let s3 = s1.clone() + &s2;
+//     assert_eq!(s3,"hello,world!");
+//     println!("{}",s1)
+// }
+
+
+// 使用至少两种方法来修复错误
+// fn main() {
+//     let s = "hello, world";
+//     greetings(s.to_string())
+// }
+//
+// fn greetings(s: String) {
+//     println!("{}",s)
+// }
+
+
+// 使用至少两种方法来修复错误
+
+
+// 使用两种方法来解决错误，不要新增代码行
+// fn main() {
+//     let s = "hello, world".to_string();
+//     let s1 = s;
+// }
+
+// 使用两种方法来解决错误，不要新增代码行
+// fn main() {
+//     let s = "hello, world";
+//     let s1: &str = s;
+// }
+/* 填空并修复所有错误 */
 fn main() {
-    let s1 = String::from("hello,");
-    let s2 = String::from("world!");
-    // 在下句中，s1的所有权被转移走了，因此后面不能再使用s1
-    let s3 = s1 + &s2;
-    assert_eq!(s3,"hello,world!");
-    // 下面的语句如果去掉注释，就会报错
-    // println!("{}",s1);
+    let raw_str = "Escapes don't work here: \x3F \u{211D}";
+    // 修改上面的行让代码工作
+    assert_eq!(raw_str, "Escapes don't work here: ? ℝ");
+
+    // 如果你希望在字符串中使用双引号，可以使用以下形式
+    let quotes = r#"And then I said: "There is no escape!""#;
+    println!("{}", quotes);
+
+    // 如果希望在字符串中使用 # 号，可以如下使用：
+    let  delimiter = r###"A string with "# in it. And even "##!"###;
+    println!("{}", delimiter);
+
+    // 填空
+    let long_delimiter = r###"Hello, "##""###;
+    assert_eq!(long_delimiter, "Hello, \"##\"")
 }
