@@ -204,17 +204,33 @@
 //     println!("在匹配后，age是{:?}",age);
 // }
 
-fn fib(pair: (i32, i32)) -> (i32, i32) {
-    let (current, next) = pair;
-    (next, current + next)
-}
+// fn fib(pair: (i32, i32)) -> (i32, i32) {
+//     let (current, next) = pair;
+//     (next, current + next)
+// }
+//
+// fn main() {
+//     let mut state = (0, 1);
+//
+//     for i in 0..20 {
+//         let current = state.0;
+//         state = fib(state);
+//         println!("第{}项: {}", i + 1, current);
+//     }
+// }
 
-fn main() {
-    let mut state = (0, 1);
 
-    for i in 0..20 {
-        let current = state.0;
-        state = fib(state);
-        println!("第{}项: {}", i + 1, current);
+fn main(){
+    let mut state=(0,1);
+    let mut next_fib= ||{
+        let (a,b)=state;
+        state=(b,a+b);
+        a
+    };
+
+    for i in 0..20{
+        println!("{}", next_fib());
     }
+
+
 }
