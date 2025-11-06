@@ -236,12 +236,6 @@
 
 
 // 填空
-enum Direction {
-    East,
-    West,
-    North,
-    South,
-}
 
 // fn main() {
 //     let dire = Direction::South;
@@ -389,3 +383,17 @@ enum Direction {
 //         _ => ()
 //     }
 // }
+
+fn main() {
+    let mut state=(0,1);
+    let mut res= ||{
+        state=(state.1,state.0+state.1);
+        state.0
+    };
+
+    for _ in 0..20{
+
+        println!("{}", res());
+
+    }
+}
