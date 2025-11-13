@@ -68,7 +68,7 @@
 
 
 
-fn main() {
+// fn main() {
     // let x =112312312;
     // match x {
     //     1|2 => println!("one or 2"),
@@ -84,34 +84,126 @@ fn main() {
     //
     //
     // }
-    let x = 'A';
+//     let x = 'A';
+//
+//     match x {
+//         'a'..='j' => println!("early ASCII letter"),
+//         'k'..='z' => println!("late ASCII letter"),
+//         _ => println!("something else"),
+//     }
+//
+//     struct Point {
+//         x:i32,
+//         y:i32
+//
+//     }
+//
+//     let p= Point { x: 10, y: 20 };
+//     let Point { x: a, y: b } = p;
+//     // println!("{}, {}", a, b);
+//
+//     let p= Point { x: 1, y: 1 };
+//
+//     match p {
+//         Point { x, y: 0 } => println!("On the x axis at {}", x),
+//         Point { x: 0, y } => println!("On the y axis at {}", y),
+//         Point { x, y } => println!("On neither axis: ({}, {})", x, y),
+//
+//     }
+//
+//
+//
+// }
+//
 
-    match x {
-        'a'..='j' => println!("early ASCII letter"),
-        'k'..='z' => println!("late ASCII letter"),
-        _ => println!("something else"),
+// enum Message{
+//     Quit,
+//     Move{x:i32,y:i32},
+//     Write(String),
+//     ChangeColor(i32,i32,i32),
+// }
+//
+// fn main(){
+//     let msg=Message::Move {x: 100,y: 100};
+//     match msg{
+//         Message::Quit=>{println!("quit!");}
+//         Message::Move{x,y}=>{println!("move {:?},{:?}", x,y);}
+//         Message::Write(text)=>{println!("{:?}",text);}
+//         Message::ChangeColor(r,g,b)=>{println!("change color {:?},{:?},{:?}",r,g,b);}
+//
+//
+//     }
+// }
+
+// enum Color {
+//     Rgb(i32, i32, i32),
+//     Hsv(i32, i32, i32),
+//
+// }
+//
+// enum Message{
+//     Quit,
+//     Move{x:i32,y:i32},
+//     Write(String),
+//     ChangeColor(Color),
+// }
+
+
+// struct Point{
+//     x: i32,
+//     y: i32,
+//
+// }
+// fn main(){
+//     // let msg = Message::ChangeColor(Color::Hsv(1,2,3));
+//     // match msg{
+//     //     Message::ChangeColor(Color::Rgb(r,g,b))=>{
+//     //         println!("ChangeColor rgb: {} {} {}", r, g, b)
+//     //     }
+//     //
+//     //     Message::ChangeColor(Color::Hsv(h,s,v))=>{
+//     //         println!("ChangeColor rgb: {} {} {}", h, s, v)
+//     //     }
+//     //
+//     //     other=>{println!("None ")}
+//     //
+//     // }
+//
+//     let ((feet,inches),Point { x:x1, y:y1}) = ((3,10),Point { x: 3, y: -10 });
+//     println!("feet={} inches={} y={}", feet, inches, y1);
+//
+// }
+
+// fn main() {
+//     let arr : [i32; 2] = [1,2];
+//     let [x,y]=arr;
+//
+//     assert_eq!(x,1);
+//     assert_eq!(y,2);
+//
+// }
+
+fn main() {
+    let arr: &[u16] = &[114, 514];
+
+    if let [x, ..] = arr {
+        assert_eq!(x, &114);
     }
 
-    struct Point {
-        x:i32,
-        y:i32
-
+    if let &[.., y] = arr {
+        assert_eq!(y, 514);
     }
 
-    let p= Point { x: 10, y: 20 };
-    let Point { x: a, y: b } = p;
-    // println!("{}, {}", a, b);
+    let arr: &[u16] = &[];
 
-    let p= Point { x: 1, y: 1 };
+    assert!(matches!(arr, [..]));
+    assert!(!matches!(arr, [x, ..]));
 
-    match p {
-        Point { x, y: 0 } => println!("On the x axis at {}", x),
-        Point { x: 0, y } => println!("On the y axis at {}", y),
-        Point { x, y } => println!("On neither axis: ({}, {})", x, y),
 
-    }
+
+
+
 
 
 
 }
-
