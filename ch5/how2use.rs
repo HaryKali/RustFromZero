@@ -59,7 +59,7 @@
 //
 //     match x {
 //         Some(50) => println!("Got 50"),
-//         Some(y) => println!("Matched, y = {:?}", y),
+//         Some(x1) => println!("Matched, y = {:?}", x1),
 //         _ => println!("Default case, x = {:?}", x),
 //     }
 //
@@ -183,27 +183,27 @@
 //
 // }
 
-fn main() {
-    let arr: &[u16] = &[114, 514];
-
-    if let [x, ..] = arr {
-        assert_eq!(x, &114);
-    }
-
-    if let &[.., y] = arr {
-        assert_eq!(y, 514);
-    }
-
-    let arr: &[u16] = &[];
-
-    assert!(matches!(arr, [..]));
-    assert!(!matches!(arr, [x, ..]));
-
-
-
-
-
-
-
-
-}
+// fn main() {
+//     let arr: &[u16] = &[114, 514];
+//
+//     if let [x, ..] = arr {
+//         assert_eq!(x, &114);
+//     }
+//
+//     if let &[.., y] = arr {
+//         assert_eq!(y, 514);
+//     }
+//
+//     let arr: &[u16] = &[];
+//
+//     assert!(matches!(arr, [..]));
+//     assert!(!matches!(arr, [x, ..]));
+//
+//
+//
+//
+//
+//
+//
+//
+// }
