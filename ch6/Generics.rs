@@ -89,26 +89,94 @@
 // }
 
 
-struct Point<T>{
-    x:T,
-    y:T
+// struct Point<T>{
+//     x:T,
+//     y:T
+// }
+//
+//
+// impl<T: std::fmt::Display> Point<T>{
+//     fn new(x:T,y:T)->Point<T>{
+//         println!("New Point");
+//         Point{x,y}
+//     }
+//
+//     fn show_location(&self){
+//         println!("Point show location {},{}",self.x,self.y);
+//     }
+// }
+//
+// fn main(){
+//     let point1 = Point::new(1,2);
+//     point1.show_location();
+//
+//
+// }
+
+// struct Point<T>{
+//     x:T,
+//     y:T
+// }
+//
+//
+// impl<T> Point<T> {
+//     fn x(&self) -> &T {
+//         &self.x
+//     }
+// }
+//
+// fn main(){
+//     let p= Point{x:1,y:2};
+//     println!("{:?}",p.x());
+//
+//
+// }
+// struct Point<T> {
+//     x: T,
+//     y: T
+// }
+//
+// struct MixPoint<U, W> {
+//     x: U,
+//     y: W
+// }
+//
+// impl<U, W> MixPoint<U, W> {
+//     fn mix<'a, T>(&'a self, other: &'a Point<T>) -> MixPoint<&'a T, &'a W> {
+//         MixPoint {
+//             x: &other.x,
+//             y: &self.y
+//         }
+//     }
+// }
+//
+// fn main() {
+//     let p1 = Point { x: 1, y: 2 };
+//     let p2 = MixPoint { x: "Hello", y: 3 };
+//     let p3 = p2.mix(&p1);
+//
+//     println!("p2.x: {}", p2.x);     // 输出: Hello
+//     println!("p3.x: {}, p3.y: {}", p3.x, p3.y); // 输出: 1, 3
+// }
+struct Point<T, U> {
+    x: T,
+    y: U,
 }
 
-
-impl<T: std::fmt::Display> Point<T>{
-    fn new(x:T,y:T)->Point<T>{
-        println!("New Point");
-        Point{x,y}
-    }
-
-    fn show_location(&self){
-        println!("Point show location {},{}",self.x,self.y);
+impl<T, U> Point<T, U> {
+    fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
+        Point {
+            x: self.x,
+            y: other.y,
+        }
     }
 }
 
-fn main(){
-    let point1 = Point::new(1,2);
-    point1.show_location();
+fn main() {
+    let p1 = Point { x: 5, y: 10.4 };
+    let p2 = Point { x: "Hello", y: 'c'};
 
+    let p3 = p1.mixup(p2);
 
+    println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
 }
