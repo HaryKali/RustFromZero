@@ -88,7 +88,6 @@
 //     Err(E),
 // }
 
-
 // struct Point<T>{
 //     x:T,
 //     y:T
@@ -158,25 +157,82 @@
 //     println!("p2.x: {}", p2.x);     // 输出: Hello
 //     println!("p3.x: {}, p3.y: {}", p3.x, p3.y); // 输出: 1, 3
 // }
-struct Point<T, U> {
-    x: T,
-    y: U,
-}
+// struct Point<T, U> {
+//     x: T,
+//     y: U,
+// }
+//
+// impl<T, U> Point<T, U> {
+//     fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
+//         Point {
+//             x: self.x,
+//             y: other.y,
+//         }
+//     }
+// }
+//
+// fn main() {
+//     let p1 = Point { x: 5, y: 10.4 };
+//     let p2 = Point { x: "Hello", y: 'c'};
+//
+//     let p3 = p1.mixup(p2);
+//
+//     println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+// }
 
-impl<T, U> Point<T, U> {
-    fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
-        Point {
-            x: self.x,
-            y: other.y,
-        }
-    }
+// fn display_array(arr: [String; 3]) {
+//     println!("{:?}", arr);
+// }
+// fn main() {
+//     let arr: [String; 3] = ["hi".to_string(), "hello".to_string(), "hey".to_string()];
+//     display_array(arr);
+//     // for num in arr.iter() {
+//     //     println!("{}", num);
+//     // }
+//     let arr: [String; 2] = ["123".to_string(), "23".to_string()];
+//
+//
+//
+//     display_array(arr);
+// }
+
+// fn display_array(arr: &[i32]){
+//     println!("{:?}", arr);
+// }
+//
+// fn main() {
+//     let arr: [i32; 5] = [1, 2, 3, 4, 5];
+//     display_array(&arr);
+//
+//     let arr: [i32; 3] = [0; 3];
+//
+//     display_array(&arr);
+//
+// }
+
+// fn display_array<T: std::fmt::Debug>(arr: &[T]){
+//     println!("{:?}", arr);
+// }
+//
+// fn main() {
+//     let arr: [i32; 5] = [1, 2, 3, 4, 5];
+//     display_array(&arr);
+//
+//     let arr: [&str; 3] = ["hi"; 3];
+//
+//     display_array(&arr);
+//
+// }
+
+fn display_array<T: std::fmt::Debug, const N: usize>(arr: [T;N]) {
+    println!("{:?}", arr);
 }
 
 fn main() {
-    let p1 = Point { x: 5, y: 10.4 };
-    let p2 = Point { x: "Hello", y: 'c'};
+    // let arr: [i32; 5] = [1, 2, 3, 4, 5];
+    // display_array(arr);
 
-    let p3 = p1.mixup(p2);
+    let arr: [&str; 3] = ["hi"; 3];
 
-    println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+    display_array(arr);
 }
