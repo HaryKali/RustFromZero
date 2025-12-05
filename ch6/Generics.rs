@@ -224,15 +224,16 @@
 //
 // }
 
-fn display_array<T: std::fmt::Debug, const N: usize>(arr: [T;N]) {
-    println!("{:?}", arr);
-}
-
-fn main() {
-    // let arr: [i32; 5] = [1, 2, 3, 4, 5];
-    // display_array(arr);
-
-    let arr: [&str; 3] = ["hi"; 3];
-
-    display_array(arr);
-}
+// fn display_array<T: std::fmt::Debug, const N: usize>(arr: [T;N]) {
+//     println!("{:?}", arr);
+// }
+//
+// fn main() {
+//     // let arr: [i32; 5] = [1, 2, 3, 4, 5];
+//     // display_array(arr);
+//
+//     let arr: [&str; 3] = ["hi"; 3];
+//
+//     display_array(arr);
+// }
+//111
