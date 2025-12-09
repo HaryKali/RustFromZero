@@ -238,7 +238,6 @@
 // }
 //111
 
-
 // 填空
 // struct A;          // 具体的类型 `A`.
 // struct S(A);       // 具体的类型 `S`.
@@ -265,7 +264,6 @@
 //     generic(SGen(2));
 // }
 
-
 // 实现下面的泛型函数 sum
 // fn sum<T: std::ops::Add<Output=T>>(num1: T, num2: T) -> T{
 //     num1 + num2
@@ -276,7 +274,6 @@
 //     assert_eq!(50, sum(20, 30));
 //     assert_eq!(2.46, sum(1.23, 1.23));
 // }
-
 
 // 实现一个结构体 Point 让代码工作
 
@@ -301,7 +298,6 @@
 //     let p = Point{x: 5, y : "hello".to_string()};
 // }
 
-
 // 为 Val 增加泛型参数，不要修改 `main` 中的代码
 // struct Val<T> {
 //     val: T,
@@ -321,3 +317,62 @@
 //     let y = Val{ val: "hello".to_string()};
 //     println!("{}, {}", x.value(), y.value());
 // }
+
+
+// struct Array<T, const N: usize> {
+//     data: [T; N],
+// }
+
+// fn main() {
+//     let arrays = [
+//         Array { data: [1, 2 ,3 ] },
+//         Array { data: [1, 2, 3] },
+//         Array { data: [1, 2, 3] },
+//     ];
+//     let arrays = [
+//         Array { data: [1.0, 2.0 ,3.0 ] },
+//         Array { data: [1.0, 2.0 ,3.0 ] },
+//         Array { data: [1.0, 2.0 ,3.0 ] },
+//
+//
+//     ];
+// }
+
+
+// 填空
+// fn print_array<T: std::fmt::Debug,const N: usize>(arr: [T; N]) {
+//     println!("{:?}", arr);
+// }
+// fn main() {
+//     let arr = [1, 2, 3];
+//     print_array(arr);
+//
+//     let arr = ["hello", "world"];
+//     print_array(arr);
+// }
+#![allow(incomplete_features)]
+#![feature(generic_const_exprs)]
+
+fn check_size<T>(val: T)
+where
+    Assert<{ core::mem::size_of::<T>() < 768 }>: IsTrue,
+{
+    //...
+}
+
+// fix the errors in main
+fn main() {
+    check_size([0u8; 767]);
+    check_size([0i32; 191]);
+    check_size(["hello你好"; 47]);
+    check_size([(); 31].map(|_| "hello你好".to_string()));
+    check_size(['中'; 191]);
+}
+
+
+
+pub enum Assert<const CHECK: bool> {}
+
+pub trait IsTrue {}
+
+impl IsTrue for Assert<true> {}
