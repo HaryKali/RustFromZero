@@ -377,14 +377,14 @@
 //
 // impl IsTrue for Assert<true> {}
 
-fn main() {
-    let mut base=(0,1);
-    let mut fib= ||{
-        base=(base.1,base.0+base.1);
-        base.0
-    };
-    for _ in 1..20 {
-        println!("{}", fib());
-    }
-
-}
+// fn main() {
+//     let mut base=(0,1);
+//     let mut fib= ||{
+//         base=(base.1,base.0+base.1);
+//         base.0
+//     };
+//     for _ in 1..20 {
+//         println!("{}", fib());
+//     }
+//
+// }

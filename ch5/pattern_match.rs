@@ -220,19 +220,17 @@
 // }
 
 
-// fn main(){
-//     let mut state=(0,1);
-//     let mut next_fib= ||{
-//         state=(state.1,state.0+state.1);
-//         state.0
-//
-//     };
-//
-//     for i in 0..20{
-//         println!("{}", next_fib());
-//     }
-//
-//
+fn main() {
+    let mut state = (0, 1);
+    let mut next_fib = || {
+        state = (state.1, state.0 + state.1);
+        state.0
+    };
+
+    for i in 0..20 {
+        println!("{}", next_fib());
+    }
+}
 
 
 // 填空
