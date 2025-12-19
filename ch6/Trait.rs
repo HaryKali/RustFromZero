@@ -1,16 +1,16 @@
 // pub trait Summary {
 //     fn summarize(&self) -> String;
 // }
-// pub struct Post {
-//     pub title: String,
-//     pub author: String,
-//     pub content: String,
-// }
-//
-// pub struct Weibo{
-//     pub content: String,
-//     pub username: String,
-// }
+pub struct Post {
+    pub title: String,
+    pub author: String,
+    pub content: String,
+}
+
+pub struct Weibo{
+    pub content: String,
+    pub username: String,
+}
 //
 // impl Post{
 //     fn init(){
@@ -37,3 +37,34 @@
 //     println!("weibo content: {}", weibo.summarize());
 //     println!("Post username: {}", post.summarize());
 // }
+
+pub trait Summary {
+    fn summarize_author(&self) -> String;
+
+    fn summarize(&self) -> String {
+        format!("(Read more from {}...)", self.summarize_author())
+    }
+}
+
+
+// impl Summary for Post{}
+impl Summary for Weibo{
+    fn summarize_author(&self) -> String{
+        format!("@{}", self.username)
+    }
+}
+
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+
+fn main() {
+    // let post= Post{title: String::from("Test"), author: String::from("Michael"), content: String::from("Hello World!") };
+    let weibo = Weibo{content: String::from("Hello World!"), username: String::from("Michael") };
+    // println!("{}", post.summarize());
+    // println!("{}", weibo.summarize());
+    notify(&weibo);
+
+}
+
