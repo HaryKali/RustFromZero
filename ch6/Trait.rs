@@ -269,16 +269,54 @@
 // }
 
 
-use std::ops;
+// use std::ops;
+//
+// // implement fn multiply to make the code work
+// // As mentioned above, `+` needs `T` to implement `std::ops::Add` Trait
+// // so, what about `*` ?  You can find the answer here: https://doc.rust-lang.org/core/ops/
+// fn multiply<T: ops::Mul<Output = T>>(x: T, y: T) -> T {
+//     x * y
+// }
+//
+// fn main() {
+//     assert_eq!(6, multiply(2u8, 3u8));
+//     assert_eq!(5.0, multiply(1.0, 5.0));
+// }
 
-// implement fn multiply to make the code work
-// As mentioned above, `+` needs `T` to implement `std::ops::Add` Trait
-// so, what about `*` ?  You can find the answer here: https://doc.rust-lang.org/core/ops/
-fn multiply<T: ops::Mul<Output = T>>(x: T, y: T) -> T {
-    x * y
-}
 
-fn main() {
-    assert_eq!(6, multiply(2u8, 3u8));
-    assert_eq!(5.0, multiply(1.0, 5.0));
-}
+
+// 修复错误，不要修改 `main` 中的代码!
+// use std::ops;
+//
+// struct Foo;
+// struct Bar;
+// #[derive(PartialEq,Debug)]
+// struct FooBar;
+// #[derive(PartialEq,Debug)]
+// struct BarFoo;
+//
+// // 下面的代码实现了自定义类型的相加： Foo + Bar = FooBar
+// impl ops::Add<Bar> for Foo {
+//     type Output = FooBar;
+//
+//     fn add(self, _rhs: Bar) -> FooBar {
+//         FooBar
+//     }
+//
+// }
+//
+// impl ops::Sub<Bar> for Foo {
+//     type Output = BarFoo;
+//     fn sub(self, _rhs: Bar) -> BarFoo {
+//         BarFoo
+//     }
+// }
+//
+// fn main() {
+//     // 不要修改下面代码
+//     // 你需要为 FooBar 派生一些特征来让代码工作
+//     assert_eq!(Foo + Bar, FooBar);
+//     assert_eq!(Foo - Bar, BarFoo);
+//
+//     println!("Success!")
+// }
