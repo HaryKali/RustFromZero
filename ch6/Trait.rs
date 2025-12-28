@@ -320,3 +320,150 @@
 //
 //     println!("Success!")
 // }
+
+
+// 实现 `fn summary`
+// 修复错误且不要移除任何代码行
+// trait Summary {
+//     fn summarize(&self) -> String;
+//
+// }
+//
+// #[derive(Debug)]
+// struct Post {
+//     title: String,
+//     author: String,
+//     content: String,
+// }
+//
+// impl Summary for Post {
+//     fn summarize(&self) -> String {
+//         format!("The author of post {} is {}", self.title, self.author)
+//     }
+//
+//     // fn summary(&self) -> String {
+//     //     format!("The author of post {} is {}", self.title, self.author)
+//     // }
+// }
+//
+// #[derive(Debug)]
+// struct Weibo {
+//     username: String,
+//     content: String,
+// }
+//
+// impl Summary for Weibo {
+//     fn summarize(&self) -> String {
+//         format!("{} published a weibo {}", self.username, self.content)
+//     }
+//     // fn summary(&self) -> String {
+//     //     format!("{} - {}", self.username, self.content)
+//     // }
+// }
+//
+// fn main() {
+//     let post = Post {
+//         title: "Popular Rust".to_string(),
+//         author: "Sunface".to_string(),
+//         content: "Rust is awesome!".to_string(),
+//     };
+//     let weibo = Weibo {
+//         username: "sunface".to_string(),
+//         content: "Weibo seems to be worse than Tweet".to_string(),
+//     };
+//
+//     summary(&post);
+//     summary(&weibo);
+//
+//     println!("{:?}", post);
+//     println!("{:?}", weibo);
+// }
+//
+// pub fn summary<T: Summary>(item: &T)-> String {
+//     item.summarize()
+//
+//
+// }
+
+
+// struct Sheep {}
+// struct Cow {}
+//
+// trait Animal {
+//     fn noise(&self) -> String;
+// }
+//
+// impl Animal for Sheep {
+//     fn noise(&self) -> String {
+//         "baaaaah!".to_string()
+//     }
+// }
+//
+// impl Animal for Cow {
+//     fn noise(&self) -> String {
+//         "moooooo!".to_string()
+//     }
+// }
+//
+// // 返回一个类型，该类型实现了 Animal 特征，但是我们并不能在编译期获知具体返回了哪个类型
+// // 修复这里的错误，你可以使用虚假的随机，也可以使用特征对象
+// fn random_animal(random_number: f64) -> impl Animal{
+//     if random_number < 0.5 {
+//         Sheep {}
+//     } else {
+//         Sheep {}
+//     }
+// }
+//
+// fn main() {
+//     let random_number = 0.234;
+//     let animal = random_animal(random_number);
+//     println!("You've randomly chosen an animal, and it says {}", animal.noise());
+// }
+//
+
+
+// fn main() {
+//     assert_eq!(sum(1, 2), 3);
+// }
+//
+// // 通过两种方法使用特征约束来实现 `fn sum`
+// fn sum<T:std::ops::Add<Output=T>>(x: T, y: T) -> T {
+//     x + y
+// }
+
+// 修复代码中的错误
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self {
+            x,
+            y,
+        }
+    }
+}
+
+impl<T: std::fmt::Debug + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest member is x = {:?}", self.x);
+        } else {
+            println!("The largest member is y = {:?}", self.y);
+        }
+    }
+}
+
+struct Unit(i32);
+
+fn main() {
+    let pair = Pair{
+        x: Unit(1),
+        y: Unit(3)
+    };
+
+    pair.cmp_display();
+}
