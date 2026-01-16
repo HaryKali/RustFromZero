@@ -30,10 +30,10 @@
 //     fn is_null(&self) -> bool;
 // }
 
-trait Container<A,B> {
-    fn contains(&self,a: A,b: B) -> bool;
-}
-
-fn difference<A,B,C>(container: &C) -> i32
-where
-    C : Container<A,B> {...}
+// trait Container<A,B> {
+//     fn contains(&self,a: A,b: B) -> bool;
+// }
+//
+// fn difference<A,B,C>(container: &C) -> i32
+// where
+//     C : Container<A,B> {...}
