@@ -18,16 +18,49 @@
 //     }
 // }
 
-fn main(){
-    let mut a=(0,1);
-    let mut fib=||{
-        (a.0,a.1)=(a.1,a.0+a.1);
-        a.0
-    };
-    for _ in 1..10{
-        println!("{:?}",fib());
+
+trait DisplayBody{
+    fn display(&self);
+
+}
+
+struct News{
+    author:String,
+    title:String,
+    body:String,
+    date:String,
+}
+
+struct Post{
+    author:String,
+    title:String,
+    body:String,
+
+}
+
+impl DisplayBody for News{
+    fn display(&self){
+        println!("News author {}", self.author);
     }
+}
 
+impl DisplayBody for Post{
+    fn display(&self){
+        println!("Post author {}", self.author);
+    }
+}
 
+fn main(){
+    // let mut a=(0,1);
+    // let mut fib=||{
+    //     (a.0,a.1)=(a.1,a.0+a.1);
+    //     a.0
+    // };
+    // for _ in 1..10{
+    //     println!("{:?}",fib());
+    // }
+    //
+    let post = News{author:"a".to_string(),title:"b".to_string(),body:"c".to_string(),date:"20210".to_string()};
+    post.display();
 
 }
